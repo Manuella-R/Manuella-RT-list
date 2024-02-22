@@ -58,31 +58,37 @@ function addToDo(event) {
     }
 }
 
-function deleteCheck(event) { // Renamed function to deleteCheck
-   // console.log(event.target);
-   const item = event.target;
+function deleteCheck(event) {
+    const item = event.target;
 
-   // delete
-   if(item.classList[0] === 'delete-btn')
-   {
-       // item.parentElement.remove();
-       // animation
-       item.parentElement.classList.add("fall");
+    // Delete
+    if (item.classList[0] === 'delete-btn') {
+        const todoItem = item.parentElement;
+        const todoText = todoItem.querySelector('.todo-item'); // Corrected selector
 
-       //removing local todos;
-       removeLocalTodos(item.parentElement);
+        // Show confirmation popup
+        const confirmation = confirm("Are you sure you want to delete this item?");
 
-       item.parentElement.addEventListener('transitionend', function(){
-           item.parentElement.remove();
-       })
-   }
+        if (confirmation) {
+            // Add fall animation
+            todoItem.classList.add("fall");
 
-   // check
-   if(item.classList[0] === 'check-btn')
-   {
-       item.parentElement.classList.toggle("completed");
-   }
+            // Remove from local storage after animation
+            todoItem.addEventListener('transitionend', function(){
+                removeLocalTodos(todoItem);
+                todoItem.remove();
+            });
+        }
+    }
+
+    // Check
+    if (item.classList[0] === 'check-btn') {
+        item.parentElement.classList.toggle("completed");
+    }
 }
+
+
+
 
 function editCheck(event) {
     const item = event.target;
@@ -251,3 +257,48 @@ if (navigator.geolocation) {
 } else {
     document.getElementById("location").innerHTML = "Geolocation is not supported by this browser.";
 }
+
+// Function to reset the list
+function resetList() {
+    // Remove all todo items from the DOM
+    while (toDoList.firstChild) {
+        toDoList.removeChild(toDoList.firstChild);
+    }
+    // Clear todos from local storage
+    localStorage.removeItem('todos');
+}
+
+// Function to check if it's the start of a new day
+function isNewDay() {
+    // Get the last reset date from local storage
+    const lastResetDate = localStorage.getItem('lastResetDate');
+    if (lastResetDate) {
+        // Parse the last reset date
+        const lastReset = new Date(lastResetDate);
+        // Get today's date
+        const today = new Date();
+        // Compare only the dates (not time)
+        return lastReset.getDate() !== today.getDate() ||
+               lastReset.getMonth() !== today.getMonth() ||
+               lastReset.getFullYear() !== today.getFullYear();
+    }
+    // If no last reset date found, consider it's a new day
+    return true;
+}
+
+// Function to prompt user for reset confirmation at the start of a new day
+function checkReset() {
+    if (isNewDay()) {
+        // Show confirmation popup
+        const confirmation = confirm("Do you want to reset the list for a new day?");
+        if (confirmation) {
+            // Reset the list
+            resetList();
+        }
+        // Update last reset date to today
+        localStorage.setItem('lastResetDate', new Date().toISOString());
+    }
+}
+
+// Call checkReset function when the page loads
+checkReset();
