@@ -290,7 +290,7 @@ function isNewDay() {
 function checkReset() {
     if (isNewDay()) {
         // Show confirmation popup
-        const confirmation = confirm("Do you want to reset the list for a new day?");
+        const confirmation = confirm("Would you like to make a new list for today?");
         if (confirmation) {
             // Reset the list
             resetList();
