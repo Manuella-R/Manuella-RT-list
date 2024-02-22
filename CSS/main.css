@@ -294,7 +294,7 @@ form button {
     overflow-wrap: anywhere;
 }
 
-.check-btn, .delete-btn, .edit-btn {
+.check-btn, .delete-btn, .edit-btn{
     font-size: 19px;
     cursor: pointer;
     width: 2em;
@@ -322,6 +322,36 @@ form button {
     transition: 0.5s;
     transform: translateY(45rem) rotateZ(45deg);
     opacity: 0;
+}
+
+#voice-input-btn {
+    margin-left: 10px;
+    padding: 8px 10px;
+    background-color: #86b3c3;
+    color: rgb(7, 7, 7);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#voice-feedback {
+    display: inline-block;
+    width: 20px;
+    height: 100%;
+    background-color: lightgray;
+    margin-right: 5px;
+    vertical-align: middle;
+}
+
+
+#voice-feedback.active {
+    animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+    0% { opacity: 0.5; }
+    50% { opacity: 1; }
+    100% { opacity: 0.5; }
 }
 
 /* Responsive design */
