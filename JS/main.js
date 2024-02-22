@@ -227,7 +227,7 @@ function showPosition(position) {
             var city = data.city;
             var country = data.countryName;
 
-            document.getElementById("location").innerHTML = `City: ${city}  Country: ${country}`;
+            document.getElementById("location").innerHTML = ` ${city}, ${country}`;
         })
         .catch(error => {
             console.error('Error fetching location data:', error);
