@@ -391,8 +391,11 @@ form button {
 }
 
 @media only screen and (max-width: 400px) {
-    form { 
+     #myUnOrdList {
         overflow-y: auto;
+        max-height: 80vh;
+    }
+    form { 
         align-items: center;
         flex-direction: column;
     }
