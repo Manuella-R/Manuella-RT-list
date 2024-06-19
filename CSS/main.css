@@ -414,7 +414,7 @@ form button {
     }
 }
 
- @media only screen and (max-width: 400px) {
+ @media only screen and (max-width: 300px) {
     /* Flex and max-width adjustments */
     .portfolio .portfolio-item,
     .contact .contact-info-item,
