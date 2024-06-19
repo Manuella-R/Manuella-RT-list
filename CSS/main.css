@@ -413,3 +413,50 @@ form button {
         box-shadow: 0 0 5px lightgray;
     }
 }
+
+ @media only screen and (max-width: 400px) {
+    /* Flex and max-width adjustments */
+    .portfolio .portfolio-item,
+    .contact .contact-info-item,
+    .service .service-item {
+        flex: 0 0 50%;
+        max-width: 50%;
+    }
+
+    .about .about-content .education,
+    .about .about-content .experience,
+    .home .home-info,
+    about .about-content .personal-info,
+    .contact .contact-form .col-6,
+    .about .about-content .skills {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+
+    .home-img {
+        display: none;
+    }
+
+    /* Font size adjustments */
+    body {
+        font-size: 14px;
+    }
+
+    .section-title h2 {
+        font-size: 30px;
+    }
+
+    .home-info p {
+        font-size: 16px;
+    }
+
+    .about .about-content .about-text h3,
+    .about .about-content .about-text p,
+    .contact .contact-info-item h4,
+    .contact .contact-info-item p {
+        font-size: 18px;
+    }
+
+  
+
+  }
