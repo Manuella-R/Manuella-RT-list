@@ -1,4 +1,4 @@
-# Just Do It. 
+# [Just Do It.](https://manuella-r.github.io/Manuella-RT-list/) 
 
 A clean, themeable to-do list web app built with vanilla HTML, CSS, and JavaScript. Your tasks are saved in your browser, so they're still there when you come back. No frameworks, no build step, no backend, which also means it runs happily on **GitHub Pages**.
 
